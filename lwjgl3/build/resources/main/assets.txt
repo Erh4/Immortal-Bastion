@@ -1,0 +1,10 @@
+lights.atlas
+character/stickman_idle.png
+character/beren.png
+character/stickman_down_walk.png
+character/beren_IdleSpritesheet.png
+character/stickman_right_walk.png
+character/beren_spritesheet.aseprite
+character/stickman_left_walk.png
+lights.png
+libgdx.png
