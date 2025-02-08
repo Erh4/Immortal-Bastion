@@ -1,4 +1,11 @@
 
+
+
+README généré par LIBGDX:
+
+# Immortal-Bastion
+
+
 ==========================
 |COMPILATION DU PROJET : |    
 |Windows : gradlew build |
@@ -9,9 +16,6 @@
 |Linux : ./gradlew run   |
 ==========================
 
-README généré par LIBGDX:
-
-# Immortal-Bastion
 
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
 
