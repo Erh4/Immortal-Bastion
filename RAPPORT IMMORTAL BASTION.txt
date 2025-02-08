@@ -1,0 +1,217 @@
+
+		 ______  __       __  __       __   ______   _______   ________  ______   __       
+		/      |/  \     /  |/  \     /  | /      \ /       \ /        |/      \ /  |      
+		$$$$$$/ $$  \   /$$ |$$  \   /$$ |/$$$$$$  |$$$$$$$  |$$$$$$$$//$$$$$$  |$$ |      
+		  $$ |  $$$  \ /$$$ |$$$  \ /$$$ |$$ |  $$ |$$ |__$$ |   $$ |  $$ |__$$ |$$ |      
+		  $$ |  $$$$  /$$$$ |$$$$  /$$$$ |$$ |  $$ |$$    $$<    $$ |  $$    $$ |$$ |      
+		  $$ |  $$ $$ $$/$$ |$$ $$ $$/$$ |$$ |  $$ |$$$$$$$  |   $$ |  $$$$$$$$ |$$ |      
+		 _$$ |_ $$ |$$$/ $$ |$$ |$$$/ $$ |$$ \__$$ |$$ |  $$ |   $$ |  $$ |  $$ |$$ |_____ 
+		/ $$   |$$ | $/  $$ |$$ | $/  $$ |$$    $$/ $$ |  $$ |   $$ |  $$ |  $$ |$$       |
+		$$$$$$/ $$/      $$/ $$/      $$/  $$$$$$/  $$/   $$/    $$/   $$/   $$/ $$$$$$$$/ 
+                                                                                   
+  
+                     _______    ______    ______   ________  ______   ______   __    __ 
+                    /       \  /      \  /      \ /        |/      | /      \ /  \  /  |
+                    $$$$$$$  |/$$$$$$  |/$$$$$$  |$$$$$$$$/ $$$$$$/ /$$$$$$  |$$  \ $$ |
+                    $$ |__$$ |$$ |__$$ |$$ \__$$/    $$ |     $$ |  $$ |  $$ |$$$  \$$ |
+                    $$    $$< $$    $$ |$$      \    $$ |     $$ |  $$ |  $$ |$$$$  $$ |
+                    $$$$$$$  |$$$$$$$$ | $$$$$$  |   $$ |     $$ |  $$ |  $$ |$$ $$ $$ |
+                    $$ |__$$ |$$ |  $$ |/  \__$$ |   $$ |    _$$ |_ $$ \__$$ |$$ |$$$$ |
+                    $$    $$/ $$ |  $$ |$$    $$/    $$ |   / $$   |$$    $$/ $$ | $$$ |
+                    $$$$$$$/  $$/   $$/  $$$$$$/     $$/    $$$$$$/  $$$$$$/  $$/   $$/ 
+
+
+=================================================================================================================
+|													      	|
+|CHAMSEDDINE SASSI : développeur des items, de l'inventaire     					      	|
+|JUSTIN FAVRAUD : développeur du moteur physique, des entités, du gameplay, de l'interface, artiste           	|
+|													     	|
+=================================================================================================================
+|Le projet a pour but de créer le cœur d'un RPG en 2D ou tout autre jeu avec des ennemis sur une vue Top-Down.	|
+|													      	|
+|													      	|
+|Techno utilisées:          											|
+|													      	|
+|-LibGDX													|
+|-Tiled														|
+|-Aseprite 													|
+=================================================================================================================
+|					FONCTIONNALITE IMPLEMENTEES						|
+|													      	|
+|- Lecture d'une carte Tiled avec ajout du joueur, des ennemis, des items et des autres objets qui peuvent être |
+|  implémentés par la carte;											|
+|														|
+|- Ajout d'un joueur qui peut se balader à travers la carte tout en respectant les règles de collisions; 	|
+|														|
+|- Ajout dynamique d'ennemi, on peut créer autant d'ennemis que l'on souhaite en ajoutant une classe dudit 	|
+|  ennemi et en y mettant une spritesheet pour les animations;							|
+|														|
+|- Les entités et les items sont chargés dynamiquement en fonction de l'emplacement du joueur pour éviter de 	|
+|  gérer l'entièreté de la carte et une perte de performances;							|
+|														|
+|- Un pathfinding (A*) est implémenté afin que les ennemis puissent se diriger vers une position donnée;	|
+|														|
+|- Système basique de combat et de loot avec possibilité d'ajout d'item consommables.				|
+|  Les armes et équipements sont techniquement fonctionnels mais aucun exemple n'a été implémenté par faute 	|
+|  de temps.													|
+|  Le code n'est donc pas sûr si vous essayez d'en implémenter, il sera peut être nécessaire d'en modifier une 	|
+|  partie (car la structure de base est déjà |existante);							|
+|														|
+|- Un mode debug est disponible en appuyant sur la touche H.							|
+|														|
+|Notre code utilise les surcharges pour permettre le polymorphisme sur la création des objets ou des entités	|
+|														|
+=================================================================================================================
+|					UTILISATION DE LA LIBRAIRIE						|
+|GameScreen crée une scène de jeu qui charge une map spécifique.						|
+|Pour charger la carte Tiled il faut modifier le chemin de la map directement dans le constructeur de la scène.	|
+|														|
+|Création d'une map:												|
+|Pour créer la map il vous faut un Tileset. 									|
+|Etapes à suivre pour créer une carte qui implémente toutes les fonctionnalités du jeu: 			|
+|														|
+|1/ création des différents layer du jeu: - "background" tuile monochrome pour éviter des bugs de texture	|
+|					 - "floor" les tuiles du sol de la carte				|
+|					 - "walls" les tuiles des murs de la carte, ils s'afficheront 		|
+|					    derriere le joueur							|
+|					 - "foreground_layer" pour afficher tout ce qui doit etre devant	|
+|					    le joueur (e.g les murs devant le joueur)				|
+|					 - "decorations" toutes les tuiles qui décorent notre carte		|
+|					 - "monsters" contient les entités monstres				|
+|					 - "Items" contient les différents items				|
+|					 - "player" contient le spawn du joueur					|
+|				         - "wall_collisions" contient les rectangles de collision		|
+|					 - "campfires" contient les feux de camps (points de sauvegarde)	|
+|														|
+|														|
+|2/ Afin de créer les objets de la carte vous devrez modifier ou créer les propriétés cités ci-dessous		|
+|														|
+|														|
+|Objet Player :													|
+|	Nom -> "player_spawn"											|
+|														|
+|Objet monstre:													|
+|	Nom -> "Nom de classe du monstre" //s'assurer que la classe existe					|
+|	Classe -> "monster_spawn"										|
+|														|
+|Objet Mur : 													|
+|	Les murs sont des objets rectangle									|
+|														|
+|Objet Items : 													|
+|	Nom : "Nom Potion"  //Ne peut pas avoir le meme nom et des stats différentes				|
+|	Classe : "Type de l'item" //"ConsumableItem" est le seul type 100% fonctionnel ici			|
+|														|
+|	Custom Properties:											|
+|	quantity : nombreItems INT										|
+|	spritePath : "TextureSpritePath" STRING									|
+|	statType : "Type de la stat à modif" STRING //Doit figurer dans les types des consommables par ex.	|
+|	timing : numberOfSeconds FLOAT //Si Item instantanné alors mettre à 0					|
+|	value : valeur de la modif de la stat  FLOAT								|
+|														|
+|Objet campfires : 												|
+|	Les feux de camps sont des points									|
+|	Nom : "campfire"											|
+|														|
+|3/ Vous n'avez plus qu'à exporter la carte en .tmx à la charger dans le constructeur du GameScreen		|
+|														|
+|Il existe une map teste template pour voir l'implémentation par défaut si vous le souhaiter			|
+|														|
+=================================================================================================================
+|					EXECUTION DU CODE							|
+|Prérequis :													|
+|Java version : 23 (https://www.oracle.com/fr/java/technologies/downloads/)					|
+|(Il est possible qu'une version moins récente de Java provoque un conflit pour l'exécution. Il est donc 	|
+|recommandé de bien vérifier la version installée)								|
+|														|
+|Gdx version : 1.12.1												|
+|														|
+|Compilation :													|
+|Sur Windows : gradlew build											|
+|Sur Linux : ./gradlew build											|
+|														|
+|Compilation et exécutionn:											|
+|Sur windows : gradlew run											|
+|Sur Linux : ./gradlew run 											|
+=================================================================================================================
+|														|
+|					PRESENTATION DU CODE							|
+|														|
+|- Main : crée la classe GameScreen;										|
+|														|
+|- GameScreen : Gère l'entièreté du jeu et de la carte;								|
+|														|
+|- Map : charge les divers layers de la carte;									|
+|														|
+|- Entities : stocke toutes les classes des monstres, du joueur et des entités en général. Pour créer un 	|
+|  nouveau monstre, c'est ici qu'il faut mettre la |classe;							|
+|														|
+|- Items : stocke toutes les classes des items. Armor et Weapon existent mais ne sont pas implémentés. 		|
+|  La classe abstraite Item est la classe parent de tous |les autres. Pour créer un consumableItem qui agit sur |
+|  des stats spécifiques il faut le spécifier dans Tiled. Pas besoin de modifier la classe. L'inventaire est une|
+|  liste d'Item ramassés par le joueur; 									|
+|														|
+|- Controls: Permet la création des commandes en fonctions des touches pressées;				|
+|														|
+|- Ui : Affiche les différentes interfaces des classes du jeu;							|
+|														|
+|- ToolsManager : Une liste de classe outils permettant de créer des animations, des sauvegardes ou encore 	|
+|  le pathfinding.												|
+|														|
+|- Exception : permet de gérer des exceptions personnalisées liées aux items.					|
+=================================================================================================================
+|					REPARTITION DES ROLES							|
+|													      	|
+|Chamseddine : 													|
+|- Items													|
+|- Exception													|
+|- Ui														|
+|- GameScreen													|
+|														|
+|Justin:													|
+|- GameScreen													|
+|- Map														|
+|- Entities													|
+|- Controls													|
+|- Ui														|
+|- ToolsManager													|
+|- Items													|
+|														|
+=================================================================================================================
+|					DESIGN PATTERNS								|
+|														|
+|														|
+|Chain of responsibility : dans Monster pour les directions de déplacements automatisées de l'entité		|
+|														|
+|Factory Method : pour la création des entités avec la classe mère Entity					|
+|														|
+|Command : il gère les controls du joueur dans Controls								|
+|														|
+|Prototype : clonage des entités et des items à l'aide des méthodes DeepCopy()					|
+|														|
+|Memento : création du système de sauvegarde dans la classe Memento						|
+=================================================================================================================
+|														|
+|					BILAN									|
+|														|
+|Lors du projet nous avons rencontrés beaucoup de difficultés inattendues. 					|
+|Il y a eu plusieurs stades de développements définissant à chaque fois des fonctionnalités précises.		|
+|La création du pathfinding des entités a été particulièrement difficile. Il fallait imaginé un pathfinding 	|
+|avec une zone dynamique. En effet, nous voulions éviter d'avoir tous les nœuds à charger à chaque fois 	|
+|si une immense carte y est ajoutée.										|
+|L'inventaire a été un deuxième défi car sauvegarder toutes les stats des items et leurs effets est un travail	|
+|assez minutieux.												|
+|Enfin, le dernier grand mur affronté était celui des sauvegardes, le Memento nécessitait une copie profonde	|
+|des objets sauvegardés et il a donc fallu restructurer une bonne partie du code pour y arriver.		|
+|Nous avons atteint la plupart de nos objectifs cependant certains points pourraient largement être améliorés.	|
+|Nous voulions faire un système d'arme et d'armure fonctionnel mais par faute de temps ça n'a pas été possible. |
+|Les classes d'équipements ayant déjà une ébauche, il ne serait pas impossible des les ajouter.			|
+|Lorsque une zone est terminée il ne se passe rien, ce n'est certes pas le but du projet mais dans l'optique	|
+|de la création d'un jeu il serait pertinent d'ajouter le passage à une nouvelle scène par exemple.		|
+|Un ajout d'une sauvegarde locale pour remplacer la sauvegarde temporaire du jeu.				|
+|Ajout d'un vrai type boss pour les différencier, avec une barre de vie bien visible.				|
+=================================================================================================================
+|					ASSETS UTILISES								|
+|														|
+|https://penusbmic.itch.io/pixel-art-tutorial-designing-palettes						|
+|https://szadiart.itch.io/rogue-fantasy-catacombs								|
+=================================================================================================================

@@ -1,0 +1,98 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "level1.tmx",
+    "expandedProjectPaths": [
+        ".",
+        "RF_Catacombs_v1.0"
+    ],
+    "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
+    "fileStates": {
+        "C:/Users/Justin/Desktop/PCOO/0.4/assets/maps/maptest.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 534.5,
+                "y": 302.5
+            }
+        },
+        "C:/Users/Justin/Desktop/PCOO/0.4/assets/maps/testiso.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "RF_Catacombs_v1.0/decorative.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "RF_Catacombs_v1.0/mainlevbuild.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 3
+        },
+        "demo_map.tmx": {
+            "expandedGroupLayers": [
+                7
+            ],
+            "expandedObjectLayers": [
+                12,
+                6,
+                9,
+                8,
+                13
+            ],
+            "scale": 1.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 1043.3333333333333,
+                "y": 761.6666666666667
+            }
+        },
+        "level1.tmx": {
+            "expandedObjectLayers": [
+                12,
+                14,
+                9,
+                7,
+                13
+            ],
+            "scale": 1.5,
+            "selectedLayer": 9,
+            "viewCenter": {
+                "x": 602.6666666666666,
+                "y": 495.66666666666663
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Justin/Desktop/PROJET FAC JEU/Immortal-Bastion/assets/maps",
+    "last.imagePath": "C:/Users/Justin/Desktop/PROJET FAC JEU/Immortal-Bastion/assets/maps/RF_Catacombs_v1.0",
+    "map.height": 100,
+    "map.lastUsedExportFilter": "Tous les Fichiers (*)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 100,
+    "openFiles": [
+        "demo_map.tmx",
+        "RF_Catacombs_v1.0/mainlevbuild.tsx",
+        "RF_Catacombs_v1.0/decorative.tsx",
+        "level1.tmx"
+    ],
+    "project": "demo_map.tiled-project",
+    "property.type": "float",
+    "recentFiles": [
+        "demo_map.tmx",
+        "RF_Catacombs_v1.0/mainlevbuild.tsx",
+        "RF_Catacombs_v1.0/decorative.tsx",
+        "level1.tmx",
+        "C:/Users/Justin/Desktop/PCOO/0.4/assets/maps/testiso.tsx",
+        "C:/Users/Justin/Desktop/PCOO/0.4/assets/maps/maptest.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

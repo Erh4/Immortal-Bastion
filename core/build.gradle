@@ -17,3 +17,11 @@ dependencies {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
   }
 }
+
+task generateJavadoc(type: Javadoc) {
+  source = fileTree('src/main/java') {
+    include '**/*.java' // Inclut tous les fichiers Java dans tous les sous-dossiers
+  }
+  classpath = files(configurations.compileClasspath, configurations.runtimeClasspath)
+  destinationDir = file("../docs/javadoc")
+}

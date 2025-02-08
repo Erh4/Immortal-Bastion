@@ -1,0 +1,205 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "gamePackages.map.Map",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_107868 { 
+   	label=map
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Map1378293267[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Map</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   backgroundLayers: MapLayers [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   campfiresLayer: MapLayer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   foregroundLayer: MapLayer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   foregroundLayersIndex: int[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   itemsLayer: MapLayer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   layers: MapLayers [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   monstersLayer: MapLayer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playerLayer: MapLayer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   renderer: OrthogonalTiledMapRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tiledMap: TiledMap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   wallsLayer: MapLayer [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getLayerIndex(layerName: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ renderTiledMapForegroundLayers()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1926385031 { 
+   	label=screens
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   GameScreen593682840[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   allConsumableItems: List&lt;ConsumableItem&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   backgroundEntityList: List&lt;Monster&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   batch: SpriteBatch [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   camera: OrthographicCamera [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   campfireList: List&lt;Campfire&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   consumableItemsMemento: List&lt;Memento&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   elapsedTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   font: BitmapFont [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   foregroundEntityList: List&lt;Monster&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   loadedConsumableItems: List&lt;ConsumableItem&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   loadedEntityList: List&lt;Monster&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   map: Map [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   monsters: List&lt;Monster&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   monstersMemento: List&lt;Memento&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   myDebugger: DebugUI [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   myPathfindingManager: PathfindingManager [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   myUi: PlayerUI [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pathfindingMapPlayer: List&lt;List&lt;Integer&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   player: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playerInventoryUI: InventoryUI [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playerMemento: Memento [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rectangleWallsList: List&lt;Rectangle&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenCenterX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenCenterY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenHeight: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenWidth: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   shapeRenderer: ShapeRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tmpElapsedTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   viewport: ExtendViewport [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ RestoreFromMemento(memento: Memento, item: ConsumableItem): ConsumableItem</TD></TR>
+<TR><TD ALIGN="LEFT" >+ RestoreFromMemento(memento: Memento, monster: Monster): Monster</TD></TR>
+<TR><TD ALIGN="LEFT" >+ RestoreFromMemento(memento: Memento, player: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ RestoreSave()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SaveToMemento(player: Player): Memento</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SaveToMemento(monster: Monster): Memento</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SaveToMemento(item: ConsumableItem): Memento</TD></TR>
+<TR><TD ALIGN="LEFT" >+ calculPunchDirection(screenX: float, screenY: float): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ calculPunchDirectionForMonster(monster: Entity): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkYIndexEntities()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAngle(x0: float, y0: float, x1: float, y1: float): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ input(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyDown(keycode: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyTyped(character: char): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyUp(keycode: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadConsumable()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadEntity()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadEveryObjects()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ logic(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mouseMoved(screenX: int, screenY: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ movCamera()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ movementInput(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ scrolled(amountX: float, amountY: float): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ touchCancelled(screenX: int, screenY: int, pointer: int, button: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ touchDown(screenX: int, screenY: int, pointer: int, button: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ touchDragged(screenX: int, screenY: int, pointer: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ touchUp(screenX: int, screenY: int, pointer: int, button: int): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+GameScreen593682840 -> Map1378293267[label="map
+[0..1]"];
+    
+}
+@enduml

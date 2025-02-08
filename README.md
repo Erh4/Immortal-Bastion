@@ -1,8 +1,19 @@
+
+==========================
+|COMPILATION DU PROJET : |    
+|Windows : gradlew build |
+|Linux : ./gradlew build |
+|                        |
+|EXECUTION DU PROJET :   |
+|Windows : gradlew run   |
+|Linux : ./gradlew run   |
+==========================
+
+README généré par LIBGDX:
+
 # Immortal-Bastion
 
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
-
-This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
 
 ## Platforms
 

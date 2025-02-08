@@ -1,0 +1,558 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "gamePackages.toolsManager.Memento",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_100526016 { 
+   	label=items
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Armor1693037551[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Armor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   armor_stat: float [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ use(player: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConsumableItem1693037551[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConsumableItem</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   fontGenerator: FreeTypeFontGenerator [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fontParameter: FreeTypeFontParameter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   initialTiming: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quantity: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rect: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   subType: Map&lt;String, Boolean&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   timing: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   type: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   uiFont: BitmapFont [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   value: float [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addQuantity(quantity: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeFontColor(color: Color)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeFontSize(size: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consumItem(player: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ decrement()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deepCopy(): ConsumableItem</TD></TR>
+<TR><TD ALIGN="LEFT" >+ increment()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initMap()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ renderItem(batch: SpriteBatch, camera: OrthographicCamera)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reverseEffect(player: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateTiming(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ use(player: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Inventory1693037551[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Inventory</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   EquipedConsumableItems: ArrayList&lt;Item&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   consumableActiveItem: ConsumableItem [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   equipment: Map&lt;String, Item&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   items: Map&lt;String, Item&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addItem(item: I)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addNewEquipedConsumableItem(item: Item)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeActiveEquipedConsumableItem()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clearUp(key: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deepCopy(): Inventory</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deleteItem(itemName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isEquipped(itemName: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isEquipped(item: I): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isInEquipedConsumableItems(itemName: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeEquipedConsumableItem(item: Item)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeEquipment(itemName: String, player: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setEquipment(item: Item, player: Player): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Item1693037551[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Item</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   itemSprite: Sprite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   itemTexture: Texture [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   posX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   posY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   spritePath: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ use(player: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Weapon1693037551[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Weapon</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   damage: float [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ use(player: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1014488750 { 
+   	label=toolsManager
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AnimationManager1758040095[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AnimationManager</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   animation: Animation&lt;TextureRegion&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   animationFrames: TextureRegion[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   spritesSheet: Texture [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CheckOverlapping1758040095[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CheckOverlapping</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ overlapsPointleCircle(circ: Circle, centerX: float, centerY: float): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ overlapsRectCircle(rect: Rectangle, circ: Circle): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Memento1758040095[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Memento</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   consumableMemento: ConsumableItem [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   monsterMemento: Monster [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playerMemento: Player [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Node1758040095[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Node</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   X: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   Y: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   checked: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fCost: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   gCost: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   goal: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   hCost: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   open: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   parent: Node [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   path: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   solid: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   start: boolean [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1926385031 { 
+   	label=screens
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   GameScreen593682840[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   allConsumableItems: List&lt;ConsumableItem&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   backgroundEntityList: List&lt;Monster&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   batch: SpriteBatch [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   camera: OrthographicCamera [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   campfireList: List&lt;Campfire&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   consumableItemsMemento: List&lt;Memento&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   elapsedTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   font: BitmapFont [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   foregroundEntityList: List&lt;Monster&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   loadedConsumableItems: List&lt;ConsumableItem&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   loadedEntityList: List&lt;Monster&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   map: Map [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   monsters: List&lt;Monster&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   monstersMemento: List&lt;Memento&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   myDebugger: DebugUI [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   myPathfindingManager: PathfindingManager [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   myUi: PlayerUI [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pathfindingMapPlayer: List&lt;List&lt;Integer&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   player: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playerInventoryUI: InventoryUI [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playerMemento: Memento [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rectangleWallsList: List&lt;Rectangle&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenCenterX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenCenterY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenHeight: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenWidth: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   shapeRenderer: ShapeRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tmpElapsedTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   viewport: ExtendViewport [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ RestoreFromMemento(memento: Memento, item: ConsumableItem): ConsumableItem</TD></TR>
+<TR><TD ALIGN="LEFT" >+ RestoreFromMemento(memento: Memento, monster: Monster): Monster</TD></TR>
+<TR><TD ALIGN="LEFT" >+ RestoreFromMemento(memento: Memento, player: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ RestoreSave()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SaveToMemento(player: Player): Memento</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SaveToMemento(monster: Monster): Memento</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SaveToMemento(item: ConsumableItem): Memento</TD></TR>
+<TR><TD ALIGN="LEFT" >+ calculPunchDirection(screenX: float, screenY: float): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ calculPunchDirectionForMonster(monster: Entity): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkYIndexEntities()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAngle(x0: float, y0: float, x1: float, y1: float): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ input(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyDown(keycode: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyTyped(character: char): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyUp(keycode: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadConsumable()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadEntity()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadEveryObjects()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ logic(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mouseMoved(screenX: int, screenY: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ movCamera()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ movementInput(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ scrolled(amountX: float, amountY: float): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ touchCancelled(screenX: int, screenY: int, pointer: int, button: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ touchDown(screenX: int, screenY: int, pointer: int, button: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ touchDragged(screenX: int, screenY: int, pointer: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ touchUp(screenX: int, screenY: int, pointer: int, button: int): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2102114367 { 
+   	label=entities
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Clam_Boss466209328[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Clam_Boss</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Clam_Monster466209328[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Clam_Monster</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Entity466209328[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Entity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   IdleAnimation: AnimationManager [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   animation: Animation&lt;TextureRegion&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   animationName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   animationsDico: HashMap&lt;String, HashMap&lt;String, Animation&lt;TextureRegion&gt;&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   animationsList: HashMap&lt;String, Animation&lt;TextureRegion&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   attack: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   attackRangeCircle: Circle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   attackRectangle: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   centerX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   centerY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   collisionNodeCircle: Circle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   collisionRectangle: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   damage: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   debugState: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   detectionCircle: Circle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   detectionRadius: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dmg_buff: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dmg_reduction: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   elapsedAnimationTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   elapsedHitAnimationTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   elapsedTimeAttack: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   health: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   height: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   hitAnimation: Animation&lt;TextureRegion&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   hitDetected: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   interactionRectangle: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lastMovementAction: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   maxHealth: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   meleeAttackRange: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   moveCommands: HashMap&lt;String, Consumer&lt;Float&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   oldPosX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   oldPosY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pathNodes: List&lt;Node&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playerDetected: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   posX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   posY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   resetAttackTiming: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   shapeRenderer: ShapeRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   speed: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   sprite: Sprite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   spritePath: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   width: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ attack(victims: List&lt;Monster&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ attack(victim: Entity)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkPlayerDetection(player: Entity)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ doDamage(entity: Entity)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ entityRender(batch: SpriteBatch, delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ goBottom(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ goBottomLeft(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ goBottomRight(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ goLeft(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ goRight(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ goTop(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ goTopLeft(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ goTopRight(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ heal(healAmount: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initAnimations(spritePath: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initAnimationsDico()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initAnimationsList()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initAttackRectangle()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initCollisionRectangle()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initDetectionCircle()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initInteractionRectangle()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initMoveCommands()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initShapeRenderer()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ punch(direction: String)</TD></TR>
+<TR><TD ALIGN="LEFT" ># renderHitAnimation(batch: SpriteBatch, delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resetAttack()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ takeDamages(damageAmount: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ upMaxHealth(maxHealth: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateAttackRectanglePosition(direction: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updatePosition()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Monster466209328[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Monster</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   epsilonDistance: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   monsterName: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ UpdateToPlayerPosition(delta: float, target: Entity, PathfindingMap: PathfindingManager)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deepCopy(): Monster</TD></TR>
+<TR><TD ALIGN="LEFT" >+ monsterRender(batch: SpriteBatch, delta: float, camera: OrthographicCamera)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ movToTarget(delta: float, target: Entity, PathfindingMap: PathfindingManager)</TD></TR>
+<TR><TD ALIGN="LEFT" ># movmentHandler1(delta: float, targetX: float, targetY: float)</TD></TR>
+<TR><TD ALIGN="LEFT" ># movmentHandler2(delta: float, targetX: float, targetY: float)</TD></TR>
+<TR><TD ALIGN="LEFT" ># movmentHandler3(delta: float, targetX: float, targetY: float)</TD></TR>
+<TR><TD ALIGN="LEFT" ># movmentHandler4(delta: float, targetX: float, targetY: float)</TD></TR>
+<TR><TD ALIGN="LEFT" ># movmentHandler5(delta: float, targetX: float, targetY: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Player466209328[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Player</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   dodgeState: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dodgeTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   listOfEffect: HashMap&lt;String, ConsumableItem&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   loadingRectangle: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   oldHP: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   oldMaxHP: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   oldSpeed: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playerInventory: Inventory [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenHeight: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenWidth: float [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addEffect(item: ConsumableItem)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deepCopy(): Player</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dodge(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ playerRender(batch: SpriteBatch, delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateEffects(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateLoadingRectangle()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updatePosition(walls: List&lt;Rectangle&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+ConsumableItem1693037551 -> Player466209328[label="consumItem() -> addEffect()"];
+Entity466209328 -> AnimationManager1758040095[label="IdleAnimation
+[0..1]"];
+Entity466209328 -> CheckOverlapping1758040095[label="checkPlayerDetection() -> overlapsPointleCircle()"];
+Entity466209328 -> Monster466209328[arrowhead=none, arrowtail=empty, dir=both];
+Entity466209328 -> Node1758040095[label="pathNodes
+[0..*]"];
+Entity466209328 -> Player466209328[arrowhead=none, arrowtail=empty, dir=both];
+GameScreen593682840 -> Memento1758040095[label="consumableItemsMemento
+[0..*]"];
+GameScreen593682840 -> Memento1758040095[label="monstersMemento
+[0..*]"];
+GameScreen593682840 -> Memento1758040095[label="playerMemento
+[0..1]"];
+Inventory1693037551 -> ConsumableItem1693037551[label="consumableActiveItem
+[0..1]"];
+Inventory1693037551 -> Item1693037551[label="EquipedConsumableItems
+[0..*]"];
+Inventory1693037551 -> Item1693037551[label="equipment
+[0..*]"];
+Inventory1693037551 -> Item1693037551[label="items
+[0..*]"];
+Item1693037551 -> Armor1693037551[arrowhead=none, arrowtail=empty, dir=both];
+Item1693037551 -> ConsumableItem1693037551[arrowhead=none, arrowtail=empty, dir=both];
+Item1693037551 -> Weapon1693037551[arrowhead=none, arrowtail=empty, dir=both];
+Memento1758040095 -> ConsumableItem1693037551[label="consumableMemento
+[0..1]"];
+Memento1758040095 -> Monster466209328[label="monsterMemento
+[0..1]"];
+Memento1758040095 -> Player466209328[label="playerMemento
+[0..1]"];
+Monster466209328 -> Clam_Boss466209328[arrowhead=none, arrowtail=empty, dir=both];
+Monster466209328 -> Clam_Monster466209328[arrowhead=none, arrowtail=empty, dir=both];
+Player466209328 -> ConsumableItem1693037551[label="listOfEffect
+[0..*]"];
+Player466209328 -> Inventory1693037551[label="playerInventory
+[0..1]"];
+    
+}
+@enduml
