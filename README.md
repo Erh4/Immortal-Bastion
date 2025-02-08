@@ -6,15 +6,14 @@ README généré par LIBGDX:
 # Immortal-Bastion
 
 
-==========================
-|COMPILATION DU PROJET : |    
-|Windows : gradlew build |
-|Linux : ./gradlew build |
-|                        |
-|EXECUTION DU PROJET :   |
-|Windows : gradlew run   |
-|Linux : ./gradlew run   |
-==========================
+COMPILATION DU PROJET :     
+Windows : gradlew build 
+Linux : ./gradlew build 
+                      
+EXECUTION DU PROJET :   
+Windows : gradlew run   
+Linux : ./gradlew run   
+
 
 
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
